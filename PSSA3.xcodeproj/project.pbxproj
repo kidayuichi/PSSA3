@@ -133,6 +133,7 @@
 			files = (
 				CE5452662A36AC7E00B55C44 /* .gitignore in Resources */,
 				CE36ECF42A36A0D00033C1CD /* LaunchScreen.storyboard in Resources */,
+				CE36ECFE2A36A5840033C1CD /* .gitignore.xib in Resources */,
 				CE36ECF12A36A0D00033C1CD /* Assets.xcassets in Resources */,
 				CE36ECEF2A36A0CF0033C1CD /* Main.storyboard in Resources */,
 			);
