@@ -14,6 +14,7 @@
 		CE36ECF12A36A0D00033C1CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE36ECF02A36A0D00033C1CD /* Assets.xcassets */; };
 		CE36ECF42A36A0D00033C1CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE36ECF22A36A0D00033C1CD /* LaunchScreen.storyboard */; };
 		CE5452662A36AC7E00B55C44 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE5452652A36AC7E00B55C44 /* .gitignore */; };
+		CEFF76212A36C8D7003D8260 /* addBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF76202A36C8D7003D8260 /* addBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE36ECF32A36A0D00033C1CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE36ECF52A36A0D00033C1CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5452652A36AC7E00B55C44 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CEFF76202A36C8D7003D8260 /* addBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				CE36ECE72A36A0CF0033C1CD /* AppDelegate.swift */,
 				CE36ECE92A36A0CF0033C1CD /* SceneDelegate.swift */,
 				CE36ECEB2A36A0CF0033C1CD /* ViewController.swift */,
+				CEFF76202A36C8D7003D8260 /* addBackground.swift */,
 				CE36ECED2A36A0CF0033C1CD /* Main.storyboard */,
 				CE36ECF02A36A0D00033C1CD /* Assets.xcassets */,
 				CE36ECF22A36A0D00033C1CD /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				CE36ECEC2A36A0CF0033C1CD /* ViewController.swift in Sources */,
 				CE36ECE82A36A0CF0033C1CD /* AppDelegate.swift in Sources */,
 				CE36ECEA2A36A0CF0033C1CD /* SceneDelegate.swift in Sources */,
+				CEFF76212A36C8D7003D8260 /* addBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
