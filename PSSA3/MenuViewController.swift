@@ -2,9 +2,14 @@ import UIKit
 
 class MenuViewController: UIViewController ,
                            UITableViewDelegate{
-
+    @IBOutlet weak var oreButton: UIButton!
+    
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var orenoCard: UILabel!
+    
+    var cardList = [String]()
+    var cardNumList = [NSNumber]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -12,8 +17,16 @@ class MenuViewController: UIViewController ,
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
         swipeGesture.direction = .left
         self.view.addGestureRecognizer(swipeGesture)
+        
+//        oreButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+//        self.view.addSubview(oreButton)
     }
 
+//    @objc func didTapButton() {
+//        let orenoCardViewController = self.storyboard?.instantiateViewController(withIdentifier: "orenoCardViewController") as! orenoCardViewController
+//            self.navigationController?.pushViewController(orenoCardViewController, animated: true)
+//        }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

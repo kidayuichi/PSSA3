@@ -13,6 +13,9 @@
 		CE36ECEF2A36A0CF0033C1CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE36ECED2A36A0CF0033C1CD /* Main.storyboard */; };
 		CE36ECF12A36A0D00033C1CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE36ECF02A36A0D00033C1CD /* Assets.xcassets */; };
 		CE36ECF42A36A0D00033C1CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE36ECF22A36A0D00033C1CD /* LaunchScreen.storyboard */; };
+		CE4850BB2A37F20D00FDA351 /* orenoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4850BA2A37F20D00FDA351 /* orenoCardViewController.swift */; };
+		CE4850BD2A3814A800FDA351 /* cardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4850BC2A3814A800FDA351 /* cardTableViewController.swift */; };
+		CE4850C12A38791700FDA351 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4850C02A38791700FDA351 /* ModalViewController.swift */; };
 		CE5452662A36AC7E00B55C44 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE5452652A36AC7E00B55C44 /* .gitignore */; };
 		CEA490192A37280700589C0D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA490182A37280700589C0D /* MenuViewController.swift */; };
 		CEFF76212A36C8D7003D8260 /* addBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF76202A36C8D7003D8260 /* addBackground.swift */; };
@@ -27,6 +30,9 @@
 		CE36ECF02A36A0D00033C1CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE36ECF32A36A0D00033C1CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE36ECF52A36A0D00033C1CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE4850BA2A37F20D00FDA351 /* orenoCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orenoCardViewController.swift; sourceTree = "<group>"; };
+		CE4850BC2A3814A800FDA351 /* cardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardTableViewController.swift; sourceTree = "<group>"; };
+		CE4850C02A38791700FDA351 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		CE5452652A36AC7E00B55C44 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CEA490182A37280700589C0D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CEFF76202A36C8D7003D8260 /* addBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBackground.swift; sourceTree = "<group>"; };
@@ -63,11 +69,14 @@
 		CE36ECE62A36A0CF0033C1CD /* PSSA3 */ = {
 			isa = PBXGroup;
 			children = (
+				CE4850C02A38791700FDA351 /* ModalViewController.swift */,
 				CE36ECE72A36A0CF0033C1CD /* AppDelegate.swift */,
 				CE36ECE92A36A0CF0033C1CD /* SceneDelegate.swift */,
 				CE36ECEB2A36A0CF0033C1CD /* ViewController.swift */,
 				CEFF76202A36C8D7003D8260 /* addBackground.swift */,
+				CE4850BC2A3814A800FDA351 /* cardTableViewController.swift */,
 				CE36ECED2A36A0CF0033C1CD /* Main.storyboard */,
+				CE4850BA2A37F20D00FDA351 /* orenoCardViewController.swift */,
 				CEA490182A37280700589C0D /* MenuViewController.swift */,
 				CE36ECF02A36A0D00033C1CD /* Assets.xcassets */,
 				CE36ECF22A36A0D00033C1CD /* LaunchScreen.storyboard */,
@@ -152,6 +161,9 @@
 				CEA490192A37280700589C0D /* MenuViewController.swift in Sources */,
 				CE36ECE82A36A0CF0033C1CD /* AppDelegate.swift in Sources */,
 				CE36ECEA2A36A0CF0033C1CD /* SceneDelegate.swift in Sources */,
+				CE4850BD2A3814A800FDA351 /* cardTableViewController.swift in Sources */,
+				CE4850C12A38791700FDA351 /* ModalViewController.swift in Sources */,
+				CE4850BB2A37F20D00FDA351 /* orenoCardViewController.swift in Sources */,
 				CEFF76212A36C8D7003D8260 /* addBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
