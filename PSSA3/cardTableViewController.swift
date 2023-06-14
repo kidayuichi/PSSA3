@@ -21,6 +21,8 @@ class cardTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,16 +35,26 @@ class cardTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cardLabel = UILabel()
         cardLabel.text = "Card Name"
-        cardLabel.frame = CGRect(x: 50, y: 5, width: 150, height: 20)
-        cardLabel.backgroundColor = UIColor.white
+        cardLabel.translatesAutoresizingMaskIntoConstraints = false // 追加
         headerView.addSubview(cardLabel)
-        
+
         let countLabel = UILabel()
         countLabel.text = "Card Count"
-        countLabel.frame = CGRect(x: 270, y: 5, width: 100, height: 20)
-        countLabel.backgroundColor = UIColor.white
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
         headerView.addSubview(countLabel)
-        
+
+        NSLayoutConstraint.activate([
+            cardLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 30),
+            countLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -50),
+            cardLabel.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor, constant: -30),
+            // 以下2行で垂直方向の位置を調整します。headerViewの上下中心に合わせる例です。
+            cardLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            countLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+        ])
+
+        cardLabel.backgroundColor = UIColor.white
+        countLabel.backgroundColor = UIColor.white
+
         return headerView
     }
     

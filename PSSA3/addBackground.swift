@@ -1,5 +1,6 @@
 import UIKit
 extension UIView {
+    
     func addBackground(name: String) {
         // スクリーンサイズの取得
         let width = UIScreen.main.bounds.size.width

@@ -6,6 +6,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         var imageName: String
     }
     
+    var backgroundImageView: UIImageView?
+    
     var photoList = [
         Photo(imageName: "Scrolle1"),
         Photo(imageName: "Scrolle2"),
@@ -19,23 +21,30 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addBackground(name: "BackGroundPicture")
-        menuButton.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: -20)
-        
-        
-        self.scrollView = UIScrollView(frame: CGRect(x: 0, y: 160, width: self.view.frame.size.width, height: 250))
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width * CGFloat(photoList.count), height: self.scrollView.frame.size.height)
-        self.scrollView.contentOffset = CGPoint(x: self.view.frame.size.width, y: 0)
+        let imageViewBackground = UIImageView()
+        imageViewBackground.image = UIImage(named: "BackGroundPicture")
+        imageViewBackground.contentMode = .scaleToFill  // Changed here
+        view.addSubview(imageViewBackground)
+        view.sendSubviewToBack(imageViewBackground)
+        self.backgroundImageView = imageViewBackground
+
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        let scrollViewHeight = screenHeight * 0.4
+        let scrollViewY = screenHeight * 0.1
+
+        self.scrollView = UIScrollView(frame: CGRect(x: 0, y: scrollViewY, width: screenWidth, height: scrollViewHeight))
+        self.scrollView.contentSize = CGSize(width: screenWidth * CGFloat(photoList.count), height: scrollViewHeight)
+        self.scrollView.contentOffset = CGPoint(x: screenWidth, y: 0)
         self.scrollView.delegate = self
         self.scrollView.isPagingEnabled = true
         self.scrollView.showsHorizontalScrollIndicator = false
         self.view.addSubview(scrollView)
-        
+
         self.setUpImageView()
-        
+
         startAutoScroll()
     }
-        
     func createImageView(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, image: Photo) -> UIImageView {
         let imageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: height))
         let image = UIImage(named: image.imageName)
@@ -90,4 +99,26 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.setContentOffset(contentOffset, animated: true)
         currentIndex = nextPage
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // Adjust the frame of the background image view
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height ?? 0
+        let statusBarHeight: CGFloat
+        if #available(iOS 13.0, *) {
+            let windowScene = UIApplication.shared.connectedScenes
+                .first { $0.activationState == .foregroundActive } as? UIWindowScene
+            statusBarHeight = windowScene?.statusBarManager?.statusBarFrame.height ?? 20
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
+        let heightPositionTop = statusBarHeight
+//        navigationBarHeight +  statusBarHeight
+        backgroundImageView?.frame = CGRect(x: 0, y: heightPositionTop, width: width, height: height)  // Changed here
+    }
+    
 }
+
