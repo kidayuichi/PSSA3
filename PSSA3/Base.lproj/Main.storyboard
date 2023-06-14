@@ -144,6 +144,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="カメラ起動"/>
+                                <connections>
+                                    <action selector="takePhotoTapped:" destination="cgR-Z7-RIy" eventType="touchUpInside" id="deK-e3-8RZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIm-F7-EOT">
                                 <rect key="frame" x="240" y="846" width="150" height="36"/>
@@ -227,6 +230,12 @@
                                     <action selector="delButtonPush:" destination="cgR-Z7-RIy" eventType="touchUpInside" id="kq4-6z-285"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DV6-KW-0w5">
+                                <rect key="frame" x="50" y="93" width="330" height="366"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="9YD-UJ-c4Z"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8dP-a2-YkD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -240,11 +249,13 @@
                             <constraint firstItem="LNi-Yf-2ye" firstAttribute="leading" secondItem="8dP-a2-YkD" secondAttribute="leading" id="Enu-HM-OZa"/>
                             <constraint firstItem="kMz-Wq-Zh9" firstAttribute="top" secondItem="xYj-2Q-ajW" secondAttribute="bottom" constant="40" id="FPi-uf-4Eq"/>
                             <constraint firstItem="8dP-a2-YkD" firstAttribute="trailing" secondItem="HTs-4k-dRg" secondAttribute="trailing" constant="75" id="Med-Hy-EfX"/>
+                            <constraint firstItem="DV6-KW-0w5" firstAttribute="leading" secondItem="8dP-a2-YkD" secondAttribute="leading" constant="50" id="N4b-1Q-eVR"/>
                             <constraint firstItem="1lO-8p-SCn" firstAttribute="top" secondItem="cE0-5d-2nD" secondAttribute="bottom" constant="40" id="SYI-ry-8yH"/>
                             <constraint firstItem="a6V-Ef-nVl" firstAttribute="leading" secondItem="8dP-a2-YkD" secondAttribute="leading" constant="40" id="St0-CP-ssc"/>
                             <constraint firstItem="gIm-F7-EOT" firstAttribute="top" secondItem="1lO-8p-SCn" secondAttribute="bottom" constant="40" id="TZq-Qs-cgh"/>
                             <constraint firstAttribute="bottom" secondItem="LNi-Yf-2ye" secondAttribute="bottom" id="bKF-Js-g3F"/>
                             <constraint firstItem="xYj-2Q-ajW" firstAttribute="leading" secondItem="8dP-a2-YkD" secondAttribute="leading" constant="40" id="ekW-SZ-Nw8"/>
+                            <constraint firstItem="8dP-a2-YkD" firstAttribute="trailing" secondItem="DV6-KW-0w5" secondAttribute="trailing" constant="50" id="fu4-Jg-xu8"/>
                             <constraint firstItem="8dP-a2-YkD" firstAttribute="trailing" secondItem="1lO-8p-SCn" secondAttribute="trailing" constant="40" id="ifU-PB-9P1"/>
                             <constraint firstItem="LNi-Yf-2ye" firstAttribute="trailing" secondItem="8dP-a2-YkD" secondAttribute="trailing" id="kPX-WM-do9"/>
                             <constraint firstItem="a6V-Ef-nVl" firstAttribute="top" secondItem="VO8-Br-JkE" secondAttribute="bottom" constant="20" id="qzD-UT-QvM"/>
@@ -262,6 +273,7 @@
                         <outlet property="cardIDLabel" destination="VO8-Br-JkE" id="5u6-9w-mhY"/>
                         <outlet property="dataIn" destination="kMz-Wq-Zh9" id="Kpf-Qv-AIo"/>
                         <outlet property="delButton" destination="B0T-pN-9Ia" id="A0O-cx-bhH"/>
+                        <outlet property="imageView" destination="DV6-KW-0w5" id="sjk-oE-QUH"/>
                         <outlet property="inputCardID" destination="a6V-Ef-nVl" id="pXI-eh-fxT"/>
                         <outlet property="inputnum" destination="cE0-5d-2nD" id="8pV-1c-R08"/>
                         <outlet property="numLabel" destination="HTs-4k-dRg" id="Cmi-Q9-pDH"/>
@@ -270,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ElI-bp-9kL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2416.030534351145" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="2415.3488372093025" y="-35.407725321888414"/>
         </scene>
         <!--カード一覧-->
         <scene sceneID="i41-c1-Kr0">

@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Photos
+import AVFoundation
 
-class orenoCardViewController: UIViewController {
-    
+class orenoCardViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cardIDLabel: UILabel!
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var cameraSwich: UIButton!
@@ -65,7 +68,29 @@ class orenoCardViewController: UIViewController {
     
     @IBAction func delButtonPush(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "PokeInfo")
-        
     }
+    
+    @IBAction func takePhotoTapped(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true,completion: nil)
+        }
+        else{
+            print("カメラ起動できねーぜっ！！")
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true)
+
+            guard let image = info[.originalImage] as? UIImage else {
+                print("Image not found.")
+                return
+            }
+
+            imageView.image = image
+        }
     
 }
