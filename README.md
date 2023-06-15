@@ -40,3 +40,5 @@ VisionKit
 Vision
 
 ## リファレンス
+
+発表資料：https://github.com/kidayuichi/PSSA3/blob/main/swiftProject.pdf
