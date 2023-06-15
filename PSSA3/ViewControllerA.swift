@@ -65,10 +65,10 @@ class ViewControllerA: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
             maskViewBorder!.leadingAnchor.constraint(equalTo: MaskView.leadingAnchor),
             maskViewBorder!.trailingAnchor.constraint(equalTo: MaskView.trailingAnchor),
             
-            NumberRegionView.heightAnchor.constraint(equalTo: MaskView.heightAnchor, multiplier: 0.15), // Height is 1/5 of MaskView
-                NumberRegionView.bottomAnchor.constraint(equalTo: MaskView.bottomAnchor), // Start at the bottom of MaskView
-                NumberRegionView.leadingAnchor.constraint(equalTo: MaskView.leadingAnchor), // Start at the left of MaskView
-                NumberRegionView.widthAnchor.constraint(equalTo: MaskView.widthAnchor, multiplier: 0.4), // Width is half of MaskView
+            NumberRegionView.heightAnchor.constraint(equalTo: MaskView.heightAnchor, multiplier: 0.15),
+            NumberRegionView.bottomAnchor.constraint(equalTo: MaskView.bottomAnchor),
+            NumberRegionView.leadingAnchor.constraint(equalTo: MaskView.leadingAnchor),
+            NumberRegionView.widthAnchor.constraint(equalTo: MaskView.widthAnchor, multiplier: 0.4),
         ])
         
         guard let device = AVCaptureDevice.default(for: .video),
@@ -110,7 +110,6 @@ class ViewControllerA: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
             
             let texts = results.compactMap { $0 as? VNRecognizedTextObservation }.compactMap { $0.topCandidates(1).first?.string }
             
-            // If texts are not empty, update the recognizedText. Otherwise, set it as an empty string.
             if !texts.isEmpty {
                 texts.forEach {
 //                    print($0)
@@ -128,7 +127,6 @@ class ViewControllerA: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         request.recognitionLanguages = ["en_US"]
         request.usesLanguageCorrection = true
         
-        // Only set the region of interest if the flag is set to true
         if self.shouldRestrictRecognitionRegion {
             request.regionOfInterest = self.regionOfInterest
         }
@@ -141,28 +139,21 @@ class ViewControllerA: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         let maskViewBounds = MaskView.bounds
         let numberRegionViewBounds = NumberRegionView.bounds
 
-        // regionOfInterest for NumberRegionView in terms of MaskView coordinates
-        let roiX = numberRegionViewBounds.origin.x / maskViewBounds.size.width // should be 0.0 as it starts at the left of MaskView
-        let roiY = numberRegionViewBounds.origin.y / maskViewBounds.size.height // should be 0.8 as it starts at 80% down from MaskView
-        let roiWidth = numberRegionViewBounds.size.width / maskViewBounds.size.width // should be 0.5 as it's half the width of MaskView
-        let roiHeight = numberRegionViewBounds.size.height / maskViewBounds.size.height // should be 0.2 as it's 20% the height of MaskView
+        let roiX = numberRegionViewBounds.origin.x / maskViewBounds.size.width
+        let roiY = numberRegionViewBounds.origin.y / maskViewBounds.size.height
+        let roiWidth = numberRegionViewBounds.size.width / maskViewBounds.size.width
+        let roiHeight = numberRegionViewBounds.size.height / maskViewBounds.size.height
 
-        // Convert these MaskView coordinates to PreviewView coordinates
         let convertedROIX = (maskViewBounds.size.height - roiY * maskViewBounds.size.height - roiHeight * maskViewBounds.size.height) / PreviewView.bounds.size.height
         let convertedROIY = roiX * maskViewBounds.size.width / PreviewView.bounds.size.width
         let convertedROIWidth = roiHeight * maskViewBounds.size.height / PreviewView.bounds.size.height
         let convertedROIHeight = roiWidth * maskViewBounds.size.width / PreviewView.bounds.size.width
 
         regionOfInterest = CGRect(x: convertedROIX, y: convertedROIY, width: convertedROIWidth, height: convertedROIHeight)
-//
-//
+
         let convertedFrame = NumberRegionView.convert(NumberRegionView.bounds, to: PreviewView)
-//        regionOfInterest = CGRect(x: (PreviewView.bounds.size.height - convertedFrame.origin.y - convertedFrame.size.height) / PreviewView.bounds.size.height,
-//                                  y: convertedFrame.origin.x / PreviewView.bounds.size.width,
-//                                  width: convertedFrame.size.height / PreviewView.bounds.size.height,
-//                                  height: convertedFrame.size.width / PreviewView.bounds.size.width)
-//
 //        print(regionOfInterest)
+
         // NumberRegionViewの座標系変換後の枠線を追加して表示
         numberRegionBorderView?.removeFromSuperview()
         numberRegionBorderView = UIView(frame: convertedFrame)
@@ -172,7 +163,6 @@ class ViewControllerA: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         view.addSubview(numberRegionBorderView!)
         view.bringSubviewToFront(numberRegionBorderView!)
         
-        // Update the frame of maskViewBorder in viewDidLayoutSubviews
         maskViewBorder?.frame = MaskView.frame
         view.bringSubviewToFront(results)
         view.bringSubviewToFront(maskViewBorder!)

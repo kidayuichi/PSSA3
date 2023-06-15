@@ -15,20 +15,13 @@ class MenuViewController: UIViewController ,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 左スワイプジェスチャーレコグナイザーを追加
+        // 左スワイプジェスチャーを追加
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
         swipeGesture.direction = .left
         self.view.addGestureRecognizer(swipeGesture)
         
-//        oreButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-//        self.view.addSubview(oreButton)
     }
 
-//    @objc func didTapButton() {
-//        let orenoCardViewController = self.storyboard?.instantiateViewController(withIdentifier: "orenoCardViewController") as! orenoCardViewController
-//            self.navigationController?.pushViewController(orenoCardViewController, animated: true)
-//        }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

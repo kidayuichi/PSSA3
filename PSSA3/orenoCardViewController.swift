@@ -1,18 +1,8 @@
-//
-//  orenoCardViewController.swift
-//  PSSA3
-//
-//  Created by user on 2023/06/13.
-//
-//import Photos
-//import AVFoundation
-
 import UIKit
 import Vision
 import VisionKit
 
 class orenoCardViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, VNDocumentCameraViewControllerDelegate {
-    //ホシ---↓
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cardIDLabel: UILabel!
@@ -26,14 +16,12 @@ class orenoCardViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var delButton: UIButton!
     @IBOutlet weak var ocrtext: UITextView!
 
-    // Setup Vision properties
     var resultingText = ""
     var requests = [VNRequest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addBackground(name: "BackGroundPicture")
-        // Setup Vision
         setupVision()
         
     }
@@ -41,7 +29,6 @@ class orenoCardViewController: UIViewController, UIImagePickerControllerDelegate
         if segue.identifier == "toCardTable" {
             let destinationVC = segue.destination as! cardTableViewController
             if let cardID = inputCardID.text, let cardCount = Int(inputnum.text ?? "") {
-                //                print("Input Card ID: \(cardID), Count: \(cardCount)")
                 destinationVC.newCardID = cardID
                 destinationVC.newCardCount = cardCount
             }
@@ -49,7 +36,7 @@ class orenoCardViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func dataIn(_ sender: Any) {
-        print("dataInButtonPressed called") // デバッグ用のprint文
+        print("ボタン押した")
         
         // inputCardID.textとinputnum.textが両方とも存在する場合のみデータをappend
         if let pokeID = inputCardID.text, !pokeID.isEmpty, let cardCountStr = inputnum.text, let cardCount = Int(cardCountStr) {
@@ -78,39 +65,31 @@ class orenoCardViewController: UIViewController, UIImagePickerControllerDelegate
         UserDefaults.standard.removeObject(forKey: "PokeInfo")
     }
     
-    //ホシ---↑
-
-    
     @IBAction func cameraON(_ sender: UIButton) {
             let documentCameraViewController = VNDocumentCameraViewController()
             documentCameraViewController.delegate = self
             present(documentCameraViewController, animated: true)
         }
 
-        // Setup Vision request as the request can be reused
         func setupVision() {
             let textRecognitionRequest = VNRecognizeTextRequest { request, _ in
                 guard let observations = request.results as? [VNRecognizedTextObservation] else {
                     print("The observations are of an unexpected type.")
                     return
                 }
-                // Combine the recognized text
                 let maximumCandidates = 1
                 for observation in observations {
                     guard let candidate = observation.topCandidates(maximumCandidates).first else { continue }
                     self.resultingText += candidate.string + "\n"
                 }
             }
-            // Set the recognition level
             textRecognitionRequest.recognitionLevel = .accurate
             self.requests = [textRecognitionRequest]
         }
         
-        // DocumentCamera finished saving the images
         func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
             controller.dismiss(animated: true)
 
-            // Dispatch queue to perform Vision requests.
             let textRecognitionWorkQueue = DispatchQueue(label: "TextRecognitionQueue", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
             textRecognitionWorkQueue.async {
                 self.resultingText = ""
@@ -127,11 +106,9 @@ class orenoCardViewController: UIViewController, UIImagePickerControllerDelegate
                     }
                 }
                 DispatchQueue.main.async(execute: {
-                    // Display the text in textView
                     self.ocrtext.text = self.resultingText
                     self.inputCardID.text = self.resultingText
                     self.inputnum.text = "1"
-                    
                 })
             }
         }
