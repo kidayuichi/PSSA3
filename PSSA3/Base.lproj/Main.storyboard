@@ -119,7 +119,7 @@
             <objects>
                 <viewController storyboardIdentifier="orenoCardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cgR-Z7-RIy" customClass="orenoCardViewController" customModule="PSSA3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PfZ-O7-Rnw">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNi-Yf-2ye">
@@ -265,7 +265,7 @@
             <objects>
                 <viewController id="483-oG-bTJ" customClass="cardTableViewController" customModule="PSSA3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SdP-l0-5kr">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ys9-tu-lAF">
@@ -326,6 +326,59 @@
             </objects>
             <point key="canvasLocation" x="3164.4444444444443" y="-35.555555555555557"/>
         </scene>
+        <!--View ControllerA-->
+        <scene sceneID="UKa-in-8G3">
+            <objects>
+                <viewController id="rm8-bE-ZCy" customClass="ViewControllerA" customModule="PSSA3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MKv-cA-le2">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Glm-Db-abX" userLabel="Preview View">
+                                <rect key="frame" x="0.0" y="0.0" width="704" height="996"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndH-Wp-6r9" userLabel="Mask View">
+                                <rect key="frame" x="54" y="97" width="595" height="800"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-fZ-ekm" userLabel="Number Region View">
+                                        <rect key="frame" x="83" y="527" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGE-ft-z8b" userLabel="Result Label">
+                                <rect key="frame" x="100" y="200" width="300" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="qN8-Tq-mWF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pfp-Bf-6se"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zGE-ft-z8b" firstAttribute="leading" secondItem="pfp-Bf-6se" secondAttribute="leading" constant="100" id="9WK-8N-QIC"/>
+                            <constraint firstItem="zGE-ft-z8b" firstAttribute="top" secondItem="pfp-Bf-6se" secondAttribute="top" constant="200" id="Bmu-3M-qc3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="MaskView" destination="ndH-Wp-6r9" id="GhN-v8-0gq"/>
+                        <outlet property="NumberRegionView" destination="cSJ-fZ-ekm" id="pQg-re-gvy"/>
+                        <outlet property="PreviewView" destination="Glm-Db-abX" id="y8F-H6-kgt"/>
+                        <outlet property="results" destination="zGE-ft-z8b" id="P4p-tm-GKQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C78-vH-QYP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.55555555555554" y="-673.33333333333337"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -354,7 +407,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Pon-lt-mct"/>
+                    <navigationItem key="navigationItem" id="Pon-lt-mct">
+                        <barButtonItem key="leftBarButtonItem" title="AAAAAAAAA" id="F0K-NU-eCG">
+                            <connections>
+                                <segue destination="rm8-bE-ZCy" kind="presentation" id="pQo-KZ-zF7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

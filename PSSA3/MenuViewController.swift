@@ -10,16 +10,10 @@ class MenuViewController: UIViewController ,
     var cardList = [String]()
     var cardNumList = [NSNumber]()
 
-    var backgroundImageView: UIImageView?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageViewBackground = UIImageView()
-            imageViewBackground.image = UIImage(named: "BackGroundPicture")
-            imageViewBackground.contentMode = .scaleToFill  // Changed here
-            view.addSubview(imageViewBackground)
-            view.sendSubviewToBack(imageViewBackground)
-            self.backgroundImageView = imageViewBackground
         
         // 左スワイプジェスチャーレコグナイザーを追加
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
@@ -75,24 +69,5 @@ class MenuViewController: UIViewController ,
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        // Adjust the frame of the background image view
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height ?? 0
-        let statusBarHeight: CGFloat
-        if #available(iOS 13.0, *) {
-            let windowScene = UIApplication.shared.connectedScenes
-                .first { $0.activationState == .foregroundActive } as? UIWindowScene
-            statusBarHeight = windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        } else {
-            statusBarHeight = UIApplication.shared.statusBarFrame.height
-        }
-        let heightPositionTop = navigationBarHeight + statusBarHeight
-        backgroundImageView?.frame = CGRect(x: 0, y: heightPositionTop, width: width, height: height)  // Changed here
     }
 }
